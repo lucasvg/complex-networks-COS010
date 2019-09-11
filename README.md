@@ -7,4 +7,5 @@ Repository for assigments of Complex Networks COS010, class of 2019-1
 *** Amazon0302.txt - http://snap.stanford.edu/data/amazon0302.html
 
 ## Dependencies
-* graph-tool (https://graph-tool.skewed.de/)
+* [graph-tool|https://graph-tool.skewed.de/]
+	* [Helpful Documentation|https://graph-tool.skewed.de/static/doc/graph_tool.html#available-subpackages]
