@@ -5,7 +5,7 @@ Repository for assigments of Complex Networks COS010, class of 2019-1
 | Module        | Description   |
 | ------------- |:-------------:|
 | graphParser   | parses external graph file into .gt |
-| genStats   | generate statistics from graph enconded in .gt format |
+| genStatsDirectedGraph   | generate statistics from directed graph enconded in .gt format |
 
 ## Directory Structure
 * tp1 - Assigment "Trabalho Pratico 1"
