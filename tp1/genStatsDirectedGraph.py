@@ -4,6 +4,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
+def vertexProperties2Json(g, iVertex):
+	text = {}
+	for prop in g.vertex_properties.keys():
+		text[prop] = g.vertex_properties[prop][iVertex]
+	return text
+
 networkName = str(sys.argv[1])
 tmpDir = "tmp/"
 
@@ -12,20 +18,37 @@ g = load_graph(tmpDir+networkName+".gt")
 inDegrees = g.get_in_degrees(g.get_vertices())
 outDegrees = g.get_out_degrees(g.get_vertices())
 
+iInMax = np.argmax(inDegrees)
+iInMin = np.argmin(inDegrees)
+iOutMax = np.argmax(outDegrees)
+iOutMin = np.argmin(outDegrees)
+
 stats = {
 	"degree": {
 		"in" : {
 			"mean": 	np.average(inDegrees),
 			"std":		np.std(inDegrees),
-			"max": 		np.amax(inDegrees),
-			"min": 		np.amin(inDegrees),
+			"max": {
+				"degree": inDegrees[iInMax],
+				"props": vertexProperties2Json(g, iInMax)
+			},
+			"min": 		{
+				"degree": inDegrees[iInMin],
+				"props": vertexProperties2Json(g, iInMin)
+			},
 			"median": 	np.median(inDegrees)
 		},
 		"out" : {
 			"mean" : 	np.average(outDegrees),
 			"std":		np.std(outDegrees),
-			"max": 		np.amax(outDegrees),
-			"min": 		np.amin(outDegrees),
+			"max": {
+				"degree": outDegrees[iOutMax],
+				"props": vertexProperties2Json(g, iOutMax)
+			},
+			"min": 		{
+				"degree": outDegrees[iOutMin],
+				"props": vertexProperties2Json(g, iOutMin)
+			},
 			"median": 	np.median(outDegrees)
 		}
 	}

@@ -2,28 +2,30 @@ from graph_tool.all import *
 
 networkName = "soc-redditHyperlinks-body"
 
-def addVertex(id, map):
+def addVertex(subreddit, map):
 	v = g.add_vertex()
-	map[id] = v
+	map[subreddit] = v
+	g.vertex_properties["subreddit"][v] = subreddit
 
 f = open("exampleGraphs/"+networkName+".tsv","r")
 
 fl =f.readlines()
 
 g = Graph(directed=True)
+propSubreddit = g.new_vertex_property("string")
+g.vertex_properties["subreddit"] = propSubreddit
 
-posts = {}
-
-for x in fl:
+subreddits = {}
+for x in fl[1:]:
 	values = x.split('\t')
-	post1 = values[0]
-	post2 = values[1]
+	subreddit1 = values[0]
+	subreddit2 = values[1]
 	
-	for post in [post1, post2]:
-		if post not in posts:
-			addVertex(post, posts)
+	for subreddit in [subreddit1, subreddit2]:
+		if subreddit not in subreddits:
+			addVertex(subreddit, subreddits)
 
-	g.add_edge(posts[post1], posts[post2])
+	g.add_edge(subreddits[subreddit1], subreddits[subreddit2])
 
 
 g.save("tmp/"+networkName+".gt")
