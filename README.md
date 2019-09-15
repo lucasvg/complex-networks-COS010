@@ -6,11 +6,16 @@ Repository for assigments of Complex Networks COS010, class of 2019-1
 ### How to Convert Graphs to Graph-Tools Format
 
 * graphParserAmazon 
-	* parses external Amzon graph file into .gt
+	* parses external Amazon graph file into .gt
+	* execute: `python3 graphParserAmazon`
+* graphParserReddit
+	* parses external Reddit graph file into .gt
+	* execute: `python3 graphParserReddit`
 
 ### How to Obtain Statistics
-* genStatsDirectedGraph <graph-name>
+* genStatsDirectedGraph
 	* generate statistics from directed graph enconded in .gt format
+	* execute: `python3 genStatsDirectedGraph <graph-filename>`
 
 ### Graphs Used
 Directory /tp1/exampleGRaphs/
@@ -18,5 +23,6 @@ Directory /tp1/exampleGRaphs/
 * [soc-redditHyperlinks-body.tsv](http://snap.stanford.edu/data/soc-RedditHyperlinks.html)
 
 ## Dependencies
+* python3
 * [graph-tool](https://graph-tool.skewed.de/)
 	* [Helpful Documentation](https://graph-tool.skewed.de/static/doc/graph_tool.html#available-subpackages)
