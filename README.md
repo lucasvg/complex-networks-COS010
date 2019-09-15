@@ -9,8 +9,9 @@ Repository for assigments of Complex Networks COS010, class of 2019-1
 
 ## Directory Structure
 * tp1 - Assigment "Trabalho Pratico 1"
-	* graphs
+	* exampleGraphs
 		* [Amazon0302.txt](http://snap.stanford.edu/data/amazon0302.html)
+		* [sx-stackoverflow-a2q.txt](http://snap.stanford.edu/data/sx-stackoverflow.html)
 
 ## Dependencies
 * [graph-tool](https://graph-tool.skewed.de/)
