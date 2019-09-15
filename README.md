@@ -21,6 +21,7 @@ Repository for assigments of Complex Networks COS010, class of 2019-1
 Directory /tp1/exampleGRaphs/
 * [Amazon0302.txt](http://snap.stanford.edu/data/amazon0302.html)
 * [soc-redditHyperlinks-body.tsv](http://snap.stanford.edu/data/soc-RedditHyperlinks.html)
+* [web-Google.txt](http://snap.stanford.edu/data/web-Google.html)
 
 ## Dependencies
 * python3
