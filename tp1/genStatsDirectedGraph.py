@@ -36,11 +36,11 @@ stats = {
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(stats)
 
-plt.hist(outDegrees, bins=50)
+plt.hist(outDegrees, bins=100)
 plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
 plt.savefig(tmpDir+networkName+'outDegreesHistogram-.png')
 
-plt.hist(inDegrees, bins=50)
+plt.hist(inDegrees, bins=100)
 plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
 plt.savefig(tmpDir+networkName+'inDegreesHistogram-.png')
 
