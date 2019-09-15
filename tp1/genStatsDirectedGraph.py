@@ -2,8 +2,9 @@ from graph_tool.all import *
 import pprint
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
-networkName = "Amazon0302"
+networkName = str(sys.argv[1])
 tmpDir = "tmp/"
 
 g = load_graph(tmpDir+networkName+".gt")
@@ -37,8 +38,12 @@ pp.pprint(stats)
 
 plt.hist(outDegrees, bins=50)
 plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
-plt.savefig(tmpDir+'outDegreesHistogram-'+networkName+'.png')
+plt.savefig(tmpDir+networkName+'outDegreesHistogram-.png')
 
 plt.hist(inDegrees, bins=50)
 plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
-plt.savefig(tmpDir+'inDegreesHistogram-'+networkName+'.png')
+plt.savefig(tmpDir+networkName+'inDegreesHistogram-.png')
+
+f = open(tmpDir+networkName+"stats.txt","w+")
+f.write(str(stats))
+f.close()
