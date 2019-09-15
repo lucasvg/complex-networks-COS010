@@ -1,17 +1,20 @@
 # complex-networks-COS010
 Repository for assigments of Complex Networks COS010, class of 2019-1
 
-## How to Use TP1
-| Module        | Description   |
-| ------------- |:-------------:|
-| graphParserAmazon   | parses external Amzon graph file into .gt |
-| genStatsDirectedGraph   | generate statistics from directed graph enconded in .gt format |
+## TP1
 
-## Directory Structure
-* tp1 - Assigment "Trabalho Pratico 1"
-	* exampleGraphs
-		* [Amazon0302.txt](http://snap.stanford.edu/data/amazon0302.html)
-		* [sx-stackoverflow-a2q.txt](http://snap.stanford.edu/data/sx-stackoverflow.html)
+### How to Convert Graphs to Graph-Tools Format
+
+* graphParserAmazon 
+	* parses external Amzon graph file into .gt
+
+### How to Obtain Statistics
+* genStatsDirectedGraph <graph-name>
+	* generate statistics from directed graph enconded in .gt format
+
+### Graphs Used
+Directory /tp1/exampleGRaphs/
+* [Amazon0302.txt](http://snap.stanford.edu/data/amazon0302.html)
 
 ## Dependencies
 * [graph-tool](https://graph-tool.skewed.de/)
