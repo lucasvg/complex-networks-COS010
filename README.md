@@ -28,3 +28,5 @@ Some are in Directory `/tp1/exampleGRaphs/`. Some are not provided in the reposi
 * python3
 * [graph-tool](https://graph-tool.skewed.de/)
 	* [Helpful Documentation](https://graph-tool.skewed.de/static/doc/graph_tool.html#available-subpackages)
+* [numpy](https://numpy.org)
+* [matplotlib](https://matplotlib.org)
