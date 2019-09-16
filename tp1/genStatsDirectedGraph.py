@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 from scipy import stats
+import json
 
 def vertexProperties2Json(g, iVertex):
 	text = {}
@@ -60,23 +61,26 @@ if g.vertex_properties.keys():
 
 comp, hist, is_attractor = label_components(g, directed=True, attractors=True)
 
-stats['components'] = str(hist)
+stats['components'] = {"comp": str(comp), "hist": str(hist), "is_attractor": str(is_attractor)}
 
-plt.hist(hist, bins=10)
-plt.gca().set(title='Connected Components', ylabel='Frequency');
+plt.figure()
+plt.hist(comp.get_array(), bins=10)
+plt.gca().set(title='Connected Components', ylabel='Frequency')
 plt.savefig(tmpDir+networkName+'ConnectedComponentsHistogram-.png')
 
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(stats)
 
-plt.hist(outDegrees, bins=100)
-plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
+plt.figure()
+plt.hist(outDegrees, bins=40)
+plt.gca().set(title='outDegree Frequency Histogram', ylabel='Frequency')
 plt.savefig(tmpDir+networkName+'outDegreesHistogram-.png')
 
-plt.hist(inDegrees, bins=100)
-plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
+plt.figure()
+plt.hist(inDegrees, bins=50)
+plt.gca().set(title='inDegrees Frequency Histogram', ylabel='Frequency')
 plt.savefig(tmpDir+networkName+'inDegreesHistogram-.png')
 
 f = open(tmpDir+networkName+"stats.txt","w+")
-f.write(str(stats))
+f.write(str(stats).replace("'", "\""))
 f.close()
