@@ -82,4 +82,4 @@ for tick in ticks:
     if not os.path.isfile(fileFullPath):
         # Get the data for the stock Apple by specifying the stock ticker, start date, and end date
         data = yf.download(tick,'2016-01-01','2018-01-01')
-        data.to_csv(fileFullPath, header=None, index=None, sep=' ', mode='a')
+        data.to_csv(fileFullPath)
