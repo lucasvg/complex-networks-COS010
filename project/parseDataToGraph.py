@@ -13,4 +13,12 @@ def getFiles():
                 files.append(pd.read_csv(os.path.join(r, file), index_col="Date"))
     return files
 
+def transformPercentageReturn(files):
+    for i in range(len(files)):
+        files[i] = files[i].pct_change()
+
 files = getFiles()
+
+transformPercentageReturn(files)
+
+print(files[0])
