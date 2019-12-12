@@ -1,10 +1,11 @@
 import os
 import pandas as pd
 
-path = os.getcwd() + "/data/"
+path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
 
 def getFiles():
     files = []
+    print("path: ", path)
     # r=root, d=directories, f = files
     for r, d, f in os.walk(path):
         for file in f:
@@ -13,5 +14,3 @@ def getFiles():
     return files
 
 files = getFiles()
-
-print(files)
