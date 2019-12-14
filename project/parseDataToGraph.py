@@ -20,16 +20,19 @@ def joinFiles(files):
         df = df.join(files[i], lsuffix='', rsuffix='')
     return df
 
-def transformPercentageReturn(files):
-    percentageReturn = []
-    for file in files:
-        percentageReturn.append(file.pct_change())
-    return percentageReturn
+def removeNulls(data):
+    totalNulls = data.isnull().sum()
+    totalNulls = totalNulls[totalNulls>0]
+    columns = totalNulls.index.array
+    print(len(columns), ' columns removed due to null values!')
+    return data.drop(columns=columns)
 
 files = getFiles()
 
-percentageReturns = transformPercentageReturn(files)
-
 data = joinFiles(files)
 
-print(data)
+data = removeNulls(data)
+
+percentageReturns = data.pct_change()
+
+print(percentageReturns)
