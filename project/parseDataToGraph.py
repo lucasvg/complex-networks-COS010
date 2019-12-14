@@ -35,4 +35,6 @@ data = removeNulls(data)
 
 percentageReturns = data.pct_change()
 
-print(percentageReturns)
+corrMatrix = percentageReturns.corr()
+
+print(corrMatrix)
