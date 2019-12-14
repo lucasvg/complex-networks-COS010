@@ -10,7 +10,8 @@ def getFiles():
     for r, d, f in os.walk(path):
         for file in f:
             if '.txt' in file:
-                files.append(pd.read_csv(os.path.join(r, file), index_col="Date"))
+                data = pd.read_csv(os.path.join(r, file), index_col="Date")[['Close']]
+                files.append(data.add_prefix(file.replace('.txt', '')))
     return files
 
 def transformPercentageReturn(files):
