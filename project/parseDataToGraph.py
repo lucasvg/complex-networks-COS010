@@ -14,11 +14,13 @@ def getFiles():
     return files
 
 def transformPercentageReturn(files):
-    for i in range(len(files)):
-        files[i] = files[i].pct_change()
+    percentageReturn = []
+    for file in files:
+        percentageReturn.append(file.pct_change())
+    return percentageReturn
 
 files = getFiles()
 
-transformPercentageReturn(files)
+percentageReturns = transformPercentageReturn(files)
 
-print(files[0])
+print(percentageReturns[0])
