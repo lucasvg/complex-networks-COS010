@@ -14,6 +14,12 @@ def getFiles():
                 files.append(data.add_prefix(file.replace('.txt', '')))
     return files
 
+def joinFiles(files):
+    df = files[0]
+    for i in range(1, len(files)):
+        df = df.join(files[i], lsuffix='', rsuffix='')
+    return df
+
 def transformPercentageReturn(files):
     percentageReturn = []
     for file in files:
@@ -24,4 +30,6 @@ files = getFiles()
 
 percentageReturns = transformPercentageReturn(files)
 
-print(percentageReturns[0])
+data = joinFiles(files)
+
+print(data)
