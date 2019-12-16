@@ -75,11 +75,23 @@ ticks = [
     "WEGE3.SA",
     "YDUQ3.SA"
 ]
+
+path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
+fileDir = path+"stocks/"
 for tick in ticks:
-    fileDir = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/stocks/"
     fileName = tick+'.txt'
     fileFullPath = os.path.join(fileDir, fileName)
     if not os.path.isfile(fileFullPath):
         # Get the data for the stock Apple by specifying the stock ticker, start date, and end date
         data = yf.download(tick,'2016-01-01','2018-01-01')
         data.to_csv(fileFullPath)
+
+
+# Loads index
+tick = '^BVSP'
+fileName = tick+'.txt'
+fileFullPath = os.path.join(path, fileName)
+if not os.path.isfile(fileFullPath):
+    # Get the data for the stock Apple by specifying the stock ticker, start date, and end date
+    data = yf.download(tick,'2016-01-01','2018-01-01')
+    data.to_csv(fileFullPath)
