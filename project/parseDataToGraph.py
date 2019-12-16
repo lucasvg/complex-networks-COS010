@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from graph_tool.all import *
 
-path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
+path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/stocks/"
+pathGraph = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
 
 def getFiles():
     files = []
@@ -71,4 +72,4 @@ createsPropLabel(g, data)
 
 loadsEdgesAndWeights(g, corrMatrix)
 
-g.save(path + "stocks.gt")
+g.save(pathGraph + "stocks.gt")

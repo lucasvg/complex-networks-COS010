@@ -76,7 +76,7 @@ ticks = [
     "YDUQ3.SA"
 ]
 for tick in ticks:
-    fileDir = os.getcwd() + "/data/"
+    fileDir = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/stocks/"
     fileName = tick+'.txt'
     fileFullPath = os.path.join(fileDir, fileName)
     if not os.path.isfile(fileFullPath):

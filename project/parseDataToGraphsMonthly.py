@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from graph_tool.all import *
 
-path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
+path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/stocks"
+pathMonthly = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/monthly/"
 
 def getFiles():
     files = []
@@ -80,4 +81,4 @@ for i in range(len(corrMatrices)):
     g = createGraph(data)
     createsPropLabel(g, data)
     loadsEdgesAndWeights(g, corrMatrices[i])
-    g.save(path + "/monthly/"+str(i)+".gt")
+    g.save(pathMonthly+str(i)+".gt")
