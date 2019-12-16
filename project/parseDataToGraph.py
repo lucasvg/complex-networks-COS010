@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 from graph_tool.all import *
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/stocks/"
 pathGraph = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
@@ -65,6 +67,10 @@ data = removeNulls(data)
 percentageReturns = data.pct_change()
 
 corrMatrix = percentageReturns.corr()
+sns.heatmap(corrMatrix, 
+        xticklabels=corrMatrix.columns,
+        yticklabels=corrMatrix.columns)
+plt.show()
 
 g = createGraph(data)
 

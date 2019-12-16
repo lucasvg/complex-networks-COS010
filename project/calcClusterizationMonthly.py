@@ -1,6 +1,8 @@
 from graph_tool.all import *
 import pandas as pd
 import os
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/monthly/"
 pathIndex = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/^BVSP.txt"
@@ -30,4 +32,9 @@ indexMonthly = getIndexMonthly()
 indexMonthly['clusterization'] = clustMonthly
 
 print(indexMonthly)
-print(indexMonthly.corr())
+corrMatrix = indexMonthly.corr()
+print(corrMatrix)
+sns.heatmap(corrMatrix, 
+        xticklabels=corrMatrix.columns,
+        yticklabels=corrMatrix.columns)
+plt.show()
