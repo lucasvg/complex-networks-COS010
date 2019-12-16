@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from graph_tool.all import *
 
 path = "/media/lucas/My Home/repositorios/complex-networks-COS010/project/data/"
 
@@ -27,6 +28,23 @@ def removeNulls(data):
     print(len(columns), ' columns removed due to null values!')
     return data.drop(columns=columns)
 
+def createGraph(data):
+    graph = Graph(directed=False)
+    stocks = data.columns.array
+    
+    graph.add_vertex(len(stocks))
+    return graph
+
+def createsPropLabel(graph, data):
+    propLabel = g.new_vertex_property("string")
+    graph.vertex_properties['label'] = propLabel
+    stocks = data.columns.array
+    stocks  = [x.replace('Close', '') for x in stocks]
+    i = 0
+    for v in graph.vertices():
+        graph.vp.label[v] = stocks[i]
+        i+=1
+
 files = getFiles()
 
 data = joinFiles(files)
@@ -37,4 +55,8 @@ percentageReturns = data.pct_change()
 
 corrMatrix = percentageReturns.corr()
 
-print(corrMatrix)
+g = createGraph(data)
+
+createsPropLabel(g, data)
+
+g.save(path + "stocks.gt")
