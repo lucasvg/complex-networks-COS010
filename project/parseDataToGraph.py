@@ -45,6 +45,16 @@ def createsPropLabel(graph, data):
         graph.vp.label[v] = stocks[i]
         i+=1
 
+def loadsEdgesAndWeights(graph, corrMatrix):
+    weights = graph.new_edge_property("float")
+    graph.edge_properties['weight'] = weights
+    matrix = corrMatrix.values
+    cols = rows = len(matrix)
+    for i in range(cols):
+        for j in range(rows):
+            graph.add_edge(graph.vertex(i), graph.vertex(j))
+            graph.ep.weight[graph.edge(i, j)] = matrix[i][j]
+
 files = getFiles()
 
 data = joinFiles(files)
@@ -58,5 +68,7 @@ corrMatrix = percentageReturns.corr()
 g = createGraph(data)
 
 createsPropLabel(g, data)
+
+loadsEdgesAndWeights(g, corrMatrix)
 
 g.save(path + "stocks.gt")
