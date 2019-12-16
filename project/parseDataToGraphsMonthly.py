@@ -31,6 +31,12 @@ def removeNulls(data):
 def splitMonthly(df):
     return df.groupby(pd.Grouper(freq='M'))
 
+def calcCorrMonthly(percentagesMonthly):
+    corr = []
+    for name, p in percentageReturnsMonthly:
+        corr.append(p.corr())
+    return corr
+
 def createGraph(data):
     graph = Graph(directed=False)
     stocks = data.columns.array
@@ -68,12 +74,10 @@ percentageReturns = data.pct_change()
 
 percentageReturnsMonthly = splitMonthly(percentageReturns)
 
-# corrMatrix = percentageReturns.corr()
+corrMatrices = calcCorrMonthly(percentageReturnsMonthly)
 
-# g = createGraph(data)
-
-# createsPropLabel(g, data)
-
-# loadsEdgesAndWeights(g, corrMatrix)
-
-# g.save(path + "stocks.gt")
+for i in range(len(corrMatrices)):
+    g = createGraph(data)
+    createsPropLabel(g, data)
+    loadsEdgesAndWeights(g, corrMatrices[i])
+    g.save(path + "/monthly/"+str(i)+".gt")
