@@ -17,13 +17,17 @@ def getAllGraphs():
 
 def getIndexMonthly():
     df = pd.read_csv(pathIndex, index_col="Date", parse_dates=[0])[['Close']]
-    return df.groupby(pd.Grouper(freq='M')).nth(0)
+    return df.groupby(pd.Grouper(freq='M'), as_index=False).nth(-1)
 
 gs = getAllGraphs()
 
 clustMonthly = []
 for g in gs:
-    clustMonthly.append(global_clustering(g, weight=g.ep.weight))
-print(clustMonthly)
+    clustMonthly.append(global_clustering(g, weight=g.ep.weight)[0])
 
 indexMonthly = getIndexMonthly()
+
+indexMonthly['clusterization'] = clustMonthly
+
+print(indexMonthly)
+print(indexMonthly.corr())
